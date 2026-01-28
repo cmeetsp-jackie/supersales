@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>차란 파트너 | 세컨핸드 셀러, 빈티지샵을 위한 검증된 판매채널</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #715BA7;
+            --primary-light: #8B7BB8;
+            --primary-dark: #5A4789;
+            --primary-subtle: #F4F1F9;
+            --accent: #FF6B35;
+            --accent-light: #FF8F66;
+            --text: #1A1A1A;
+            --text-light: #6B6B6B;
+            --text-muted: #9A9A9A;
+            --bg: #FAFAFA;
+            --white: #FFFFFF;
+            --border: #E8E8E8;
+            --success: #10B981;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .re-logo img {
+            height: 16px;
+            width: auto;
+        }
+
+        .logo img {
+            height: 22px;
+            width: auto;
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 140px 48px 80px;
+            background: linear-gradient(180deg, var(--primary-subtle) 0%, var(--white) 100%);
+            position: relative;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(113, 91, 167, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+            color: var(--text);
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 2vw, 22px);
+            color: var(--text-light);
+            margin-bottom: 48px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--primary);
+            color: white;
+            padding: 20px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
+        }
+
+        .hero-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(113, 91, 167, 0.3);
+        }
+
+        .hero-support-text {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            margin-top: 0;
+            font-weight: 500;
+        }
+
+        .hero-support-text span {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Stats Section */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            max-width: 1000px;
+            width: 100%;
+            padding: 40px;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: clamp(28px, 3.5vw, 40px);
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* ========== Phone Mockup Section ========== */
+        .mockup-section {
+            padding: 100px 48px;
+            background: var(--bg);
+        }
+
+        .mockup-section .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .mockup-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 80px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .phone-mockup-container {
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .phone-label {
+            margin-top: 20px;
+            font-size: 15px;
+            color: var(--primary);
+            font-weight: 600;
+            background: var(--primary-subtle);
+            padding: 8px 20px;
+            border-radius: 100px;
+            display: inline-block;
+        }
+
+        .phone-frame {
+            width: 280px;
+            background: #0f0f0f;
+            border-radius: 42px;
+            padding: 8px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+        }
+
+        .phone-frame.left {
+            animation: floatLeft 6s ease-in-out infinite;
+        }
+
+        .phone-frame.right {
+            animation: floatRight 6s ease-in-out infinite;
+        }
+
+        @keyframes floatLeft {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes floatRight {
+            0%, 100% { transform: translateY(-5px); }
+            50% { transform: translateY(5px); }
+        }
+
+        .phone-screen {
+            background: #fff;
+            border-radius: 36px;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .phone-screen .screen-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        /* 판매자 화면 전용 */
+        .phone-screen.seller-screen {
+            display: flex;
+            flex-direction: column;
+            height: 560px;
+        }
+
+        /* Dynamic Island */
+        .dynamic-island {
+            height: 28px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            padding-top: 8px;
+            flex-shrink: 0;
+        }
+
+        .dynamic-island-inner {
+            width: 80px;
+            height: 24px;
+            background: #0f0f0f;
+            border-radius: 12px;
+        }
+
+        /* App Header - New Style */
+        .app-header-new {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 14px 10px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .app-logo-new {
+            font-size: 16px;
+            font-weight: 700;
+            color: #222;
+            letter-spacing: -0.02em;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header-icons svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Product Image Area */
+        .product-image-area {
+            background: #f5f5f5;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product-main-image {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .image-dots {
+            display: flex;
+            gap: 5px;
+            margin-top: 8px;
+        }
+
+        .image-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #ddd;
+        }
+
+        .image-dot.active {
+            background: #222;
+        }
+
+        /* Product Info - New Style */
+        .product-info-new {
+            padding: 14px 14px 16px;
+        }
+
+        .product-tags {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
+        .tag-excellent {
+            padding: 2px 6px;
+            border: 1px solid #e0e0e0;
+            border-radius: 3px;
+            font-size: 9px;
+            color: #666;
+        }
+
+        .tag-brand {
+            font-size: 11px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .tag-like {
+            margin-left: auto;
+            font-size: 9px;
+            color: #999;
+        }
+
+        .product-category {
+            font-size: 9px;
+            color: #999;
+            margin-bottom: 3px;
+        }
+
+        .product-name-new {
+            font-size: 12px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .product-name-new .new-badge {
+            color: var(--primary);
+            font-size: 10px;
+            margin-left: 4px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .price-original {
+            font-size: 10px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .price-discount {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .price-current {
+            font-size: 15px;
+            font-weight: 700;
+            color: #222;
+        }
+
+        .coupon-btn {
+            margin-left: auto;
+            padding: 4px 8px;
+            background: #f8f5ff;
+            border: 1px solid #e9e0ff;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Shipping Options */
+        .shipping-section {
+            padding: 8px 14px;
+            background: #fafafa;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .shipping-title {
+            font-size: 10px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .shipping-option {
+            padding: 8px 10px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            position: relative;
+        }
+
+        .shipping-option.selected {
+            background: #f8f5ff;
+            border: 2px solid var(--primary);
+        }
+
+        .shipping-option-title {
+            font-size: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .shipping-option-desc {
+            font-size: 8px;
+            color: #888;
+            margin-top: 1px;
+        }
+
+        .shipping-check {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 14px;
+            height: 14px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .shipping-check svg {
+            width: 8px;
+            height: 8px;
+        }
+
+        /* Bottom Action Bar */
+        .bottom-action-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .like-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4px 6px;
+        }
+
+        .like-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .like-btn span {
+            font-size: 7px;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        .cart-btn {
+            flex: 1;
+            padding: 9px;
+            background: #fff;
+            border: 2px solid var(--primary);
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .buy-btn {
+            flex: 1;
+            padding: 9px;
+            background: var(--primary);
+            border: none;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Home Indicator */
+        .home-indicator {
+            height: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .home-indicator-bar {
+            width: 70px;
+            height: 4px;
+            background: #0f0f0f;
+            border-radius: 2px;
+        }
+
+        /* Seller App Styles */
+        .seller-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 14px;
+            flex-shrink: 0;
+        }
+
+        .seller-header svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .seller-header h1 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0 auto;
+            padding-right: 18px;
+        }
+
+        .seller-tabs {
+            display: flex;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 0 14px;
+            flex-shrink: 0;
+        }
+
+        .seller-tab {
+            padding: 10px 14px;
+            font-size: 12px;
+            font-weight: 400;
+            color: #888;
+            border: none;
+            border-bottom: 2px solid transparent;
+            background: transparent;
+        }
+
+        .seller-tab.active {
+            font-weight: 600;
+            color: #222;
+            border-bottom-color: #222;
+        }
+
+        .filter-pills {
+            display: flex;
+            gap: 6px;
+            padding: 10px 14px;
+            overflow-x: auto;
+            flex-shrink: 0;
+        }
+
+        .filter-pill {
+            padding: 6px 12px;
+            font-size: 10px;
+            font-weight: 500;
+            border-radius: 16px;
+            border: none;
+            background: #f5f5f5;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .filter-pill.active {
+            background: #222;
+            color: #fff;
+        }
+
+        .order-list {
+            flex: 1;
+            overflow-y: auto;
+            max-height: 200px;
+        }
+
+        .order-list::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .order-list::-webkit-scrollbar-track {
+            background: #f5f5f5;
+        }
+
+        .order-list::-webkit-scrollbar-thumb {
+            background: #ddd;
+            border-radius: 3px;
+        }
+
+        .order-item {
+            padding: 10px 14px;
+            border-bottom: 4px solid #f5f5f5;
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .order-type {
+            font-size: 11px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .order-date {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            font-size: 11px;
+            color: #666;
+        }
+
+        .order-date svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .order-content {
+            border-top: 1px solid #f0f0f0;
+            padding-top: 8px;
+        }
+
+        .order-status {
+            font-size: 10px;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .order-status.purple {
+            color: var(--primary);
+        }
+
+        .order-status.dark {
+            color: #222;
+        }
+
+        .order-product {
+            display: flex;
+            gap: 10px;
+        }
+
+        .order-product-image {
+            width: 52px;
+            height: 52px;
+            border-radius: 6px;
+            background: #f0f0f0;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .order-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .order-product-info {
+            flex: 1;
+        }
+
+        .order-product-price {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .order-product-brand {
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .order-product-name {
+            font-size: 9px;
+            color: #888;
+        }
+
+        .credit-section {
+            margin: 8px 14px;
+            padding: 12px;
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #e8e8e8;
+            flex-shrink: 0;
+        }
+
+        .credit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .credit-title {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .credit-title svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .credit-link {
+            font-size: 11px;
+            color: #888;
+        }
+
+        .credit-amount {
+            font-size: 22px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .credit-btn {
+            width: 100%;
+            padding: 10px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .credit-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            border-top: 1px solid #f0f0f0;
+            flex-shrink: 0;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            background: transparent;
+            border: none;
+        }
+
+        .nav-item svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .nav-item span {
+            font-size: 9px;
+            color: #999;
+        }
+
+        .nav-item.active span {
+            color: #222;
+        }
+
+        /* ========== Value Props Section ========== */
+        .value-section {
+            padding: 120px 48px;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 44px);
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            background: var(--bg);
+            border-radius: 20px;
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .value-card.featured {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .value-card.featured .value-title,
+        .value-card.featured .value-desc {
+            color: white;
+        }
+
+        .value-card.featured .value-highlight {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .value-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--primary-subtle);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+
+        .value-card.featured .value-icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .value-tag {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: var(--accent);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 100px;
+        }
+
+        .value-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .value-highlight {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .value-desc {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ========== Reviews Section ========== */
+        .reviews-section {
+            padding: 120px 48px;
+            background: var(--primary-subtle);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .review-avatar {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .review-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .review-info span {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .review-badge {
+            margin-left: auto;
+            background: var(--primary-subtle);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 100px;
+        }
+
+        .review-text {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .review-stats {
+            display: flex;
+            gap: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .review-stat {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .review-stat strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* ========== Form Section ========== */
+        .form-section {
+            padding: 120px 48px;
+            background: var(--white);
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .form-description {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-top: 16px;
+            line-height: 1.7;
+        }
+
+        .partner-form {
+            background: var(--bg);
+            border-radius: 20px;
+            padding: 48px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .form-group label .required {
+            color: var(--accent);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(113, 91, 167, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-agreement {
+            margin: 24px 0;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+        }
+
+        .form-submit-btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(113, 91, 167, 0.25);
+        }
+
+        .form-support-text {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* ========== Footer ========== */
+        footer {
+            background: var(--text);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 48px;
+        }
+
+        .footer-info {
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        .footer-info p {
+            margin-bottom: 4px;
+        }
+
+        .footer-info strong {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .footer-info a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-copyright {
+            max-width: 1200px;
+            margin: 32px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 1200px) {
+            .mockup-container {
+                gap: 60px;
+            }
+            
+            .phone-frame {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 16px 24px;
+            }
+
+            .hero {
+                padding: 120px 24px 60px;
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+                padding: 32px;
+            }
+
+            .mockup-section {
+                padding: 80px 24px;
+            }
+
+            .mockup-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 48px;
+            }
+
+            .phone-frame {
+                width: 280px;
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .value-section,
+            .reviews-section,
+            .form-section {
+                padding: 80px 24px;
+            }
+
+            footer {
+                padding: 48px 24px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                padding: 24px;
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .partner-form {
+                padding: 32px 24px;
+            }
+
+            .value-card {
+                padding: 32px;
+            }
+
+            .value-highlight {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <div class="logo-stack">
+                <div class="re-logo">
+                    <img src="re-logo.png" alt="Fashion, re-Loved">
+                </div>
+                <div class="logo">
+                    <img src="logo_color.png" alt="차란">
+                </div>
+            </div>
+        </div>
+        <a href="#partner-form" class="nav-cta">입점 신청하기</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🎉 오픈 기념 수수료 0% 이벤트</div>
+            <h1>
+                세컨핸드 셀러, 빈티지샵 사장님들을 위한<br>
+                <span class="highlight">검증된 판매채널</span>
+            </h1>
+            <p class="hero-subtitle">
+                120만 패션 유저에게 당신의 상품을 선보이세요.<br>
+                수수료 없이, 빠른 정산으로, 더 많이 팔고 더 많이 남기세요.
+            </p>
+            <a href="#partner-form" class="hero-cta">
+                파트너 입점 신청
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <p class="hero-support-text">대량업로드 지원받고 <span>수수료 0%</span> 혜택받기</p>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">120만+</div>
+                <div class="stat-label">누적 이용자</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">90만+</div>
+                <div class="stat-label">누적 판매 아이템</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">250억+</div>
+                <div class="stat-label">누적 거래액</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">84억+</div>
+                <div class="stat-label">파트너 정산액</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phone Mockup Section -->
+    <section class="mockup-section">
+        <div class="section-header">
+            <span class="section-label">App Preview</span>
+            <h2 class="section-title">차란 앱 미리보기</h2>
+        </div>
+
+        <div class="mockup-container">
+            <!-- 왼쪽: 구매자 앱 -->
+            <div class="phone-mockup-container">
+                <div class="phone-frame left">
+                    <div class="phone-screen">
+                        <img src="buyer-screen.png" alt="차란 구매자 화면" class="screen-image">
+                    </div>
+                </div>
+                <div class="phone-label">구매자 화면</div>
+            </div>
+
+            <!-- 오른쪽: 판매자 앱 -->
+            <div class="phone-mockup-container">
+                <div class="phone-frame right">
+                    <div class="phone-screen seller-screen">
+                        <div class="dynamic-island">
+                            <div class="dynamic-island-inner"></div>
+                        </div>
+
+                        <div class="seller-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2">
+                                <path d="M15 18l-6-6 6-6"/>
+                            </svg>
+                            <h1>마켓관리</h1>
+                        </div>
+
+                        <div class="seller-tabs">
+                            <button class="seller-tab">상품관리</button>
+                            <button class="seller-tab active">판매관리</button>
+                        </div>
+
+                        <div class="filter-pills">
+                            <button class="filter-pill active">전체</button>
+                            <button class="filter-pill">주문 접수</button>
+                            <button class="filter-pill">배송 진행 중</button>
+                            <button class="filter-pill">배송 완료</button>
+                        </div>
+
+                        <div class="order-list">
+                            <div class="order-item">
+                                <div class="order-header">
+                                    <span class="order-type">차란케어</span>
+                                    <div class="order-date">
+                                        26/01/26 주문
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2">
+                                            <path d="M9 18l6-6-6-6"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="order-content">
+                                    <div class="order-status purple">차란에게 배송 중</div>
+                                    <div class="order-product">
+                                        <div class="order-product-image"><img src="maison-kitsune.png" alt="MAISON KITSUNÉ"></div>
+                                        <div class="order-product-info">
+                                            <div class="order-product-price">45,000</div>
+                                            <div class="order-product-brand">MAISON KITSUNÉ</div>
+                                            <div class="order-product-name">메종키츠네 남성 칠렉스 폭스 이클립스 블루 ...</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="order-item">
+                                <div class="order-header">
+                                    <span class="order-type">판매자직배송</span>
+                                    <div class="order-date">
+                                        26/01/19 주문
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2">
+                                            <path d="M9 18l6-6-6-6"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="order-content">
+                                    <div class="order-status dark">구매자에게 배송 중</div>
+                                    <div class="order-product">
+                                        <div class="order-product-image"><img src="gucci.png" alt="GUCCI"></div>
+                                        <div class="order-product-info">
+                                            <div class="order-product-price">190,000</div>
+                                            <div class="order-product-brand">GUCCI</div>
+                                            <div class="order-product-name">구찌&아디다스 한정판 니트 (셀레나고메즈 ...</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="credit-section">
+                            <div class="credit-header">
+                                <div class="credit-title">
+                                    크레딧 (정산액)
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>
+                                    </svg>
+                                </div>
+                                <span class="credit-link">내역 보기</span>
+                            </div>
+                            <div class="credit-amount">245,000c</div>
+                            <button class="credit-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2">
+                                    <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9"/>
+                                </svg>
+                                크레딧 현금 전환 신청
+                            </button>
+                        </div>
+
+                        <div class="bottom-nav">
+                            <button class="nav-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                                <span>홈</span>
+                            </button>
+                            <button class="nav-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5">
+                                    <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+                                </svg>
+                                <span>카테고리</span>
+                            </button>
+                            <button class="nav-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/>
+                                </svg>
+                                <span>옷장정리</span>
+                            </button>
+                            <button class="nav-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5">
+                                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                                </svg>
+                                <span>찜</span>
+                            </button>
+                            <button class="nav-item active">
+                                <svg viewBox="0 0 24 24" fill="#222" stroke="#222" stroke-width="1.5">
+                                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                                </svg>
+                                <span>마이차란</span>
+                            </button>
+                        </div>
+
+                        <div class="home-indicator">
+                            <div class="home-indicator-bar"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="phone-label">판매자 화면</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="value-section">
+        <div class="section-header">
+            <span class="section-label">Why Charan?</span>
+            <h2 class="section-title">차란이 특별한 이유</h2>
+        </div>
+
+        <div class="value-grid">
+            <div class="value-card featured">
+                <span class="value-tag">EVENT</span>
+                <div class="value-icon">💰</div>
+                <div class="value-title">판매 수수료</div>
+                <div class="value-highlight">0%</div>
+                <p class="value-desc">
+                    서비스 오픈 기념으로 입점/판매 수수료 완전 무료!<br>
+                    판 만큼 100% 가져가세요.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">⚡</div>
+                <div class="value-title">업계 최고 속도</div>
+                <div class="value-highlight">72시간</div>
+                <p class="value-desc">
+                    구매확정 후 72시간 이내 정산 완료.<br>
+                    빠른 현금 유동성으로 사업 운영이 더 쉬워집니다.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">📱</div>
+                <div class="value-title">가장 쉬운 판매</div>
+                <div class="value-highlight">1분</div>
+                <p class="value-desc">
+                    스마트폰으로 1분 만에 상품 등록 완료.<br>
+                    대량 물량은 벌크 등록 + 전담 매니저가 지원합니다.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">👥</div>
+                <div class="value-title">검증된 판매채널</div>
+                <div class="value-highlight">120만</div>
+                <p class="value-desc">
+                    패션 구매에 강한 니즈가 있는 120만 유저.<br>
+                    이미 "살 준비 된" 고객에게 바로 노출됩니다.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">🚚</div>
+                <div class="value-title">배송대행</div>
+                <div class="value-highlight">부담 ZERO</div>
+                <p class="value-desc">
+                    편의점 방문, 택배 예약의 번거로움 없이<br>
+                    문 앞에 두기만 하세요.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews-section">
+        <div class="section-header">
+            <span class="section-label">Partner Reviews</span>
+            <h2 class="section-title">파트너 셀러 후기</h2>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">레</div>
+                    <div class="review-info">
+                        <h4>레트XX 빈티지</h4>
+                        <span>서울 성수동</span>
+                    </div>
+                    <span class="review-badge">입점 8개월</span>
+                </div>
+                <p class="review-text">
+                    수수료 0%가 진짜였어요. 다른 플랫폼은 15~20% 떼가는데, 여기는 진짜 0원. 마진이 확 늘었습니다. 정산도 빨라서 재고 회전이 훨씬 좋아졌어요.
+                </p>
+                <div class="review-stats">
+                    <span class="review-stat">월 판매 <strong>35건</strong></span>
+                    <span class="review-stat">평균 정산 <strong>68시간</strong></span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">더</div>
+                    <div class="review-info">
+                        <h4>더XX빈티지샵</h4>
+                        <span>서울 홍대</span>
+                    </div>
+                    <span class="review-badge">입점 5개월</span>
+                </div>
+                <p class="review-text">
+                    오프라인 매장만 운영하다가 온라인 판매 시작했는데, 벌크 등록이 너무 편해요. 매니저분이 직접 도와주셔서 500개 넘는 상품 일주일 만에 다 올렸어요.
+                </p>
+                <div class="review-stats">
+                    <span class="review-stat">등록 상품 <strong>520개</strong></span>
+                    <span class="review-stat">월 매출 <strong>1,200만원</strong></span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">빈</div>
+                    <div class="review-info">
+                        <h4>빈티지XX하우스</h4>
+                        <span>부산 서면</span>
+                    </div>
+                    <span class="review-badge">입점 11개월</span>
+                </div>
+                <p class="review-text">
+                    지방이라 온라인 판매가 필수인데, 차란 유저들이 패션에 관심 많아서 판매 전환이 잘 돼요. 번개장터보다 구매 문의 질이 훨씬 좋습니다.
+                </p>
+                <div class="review-stats">
+                    <span class="review-stat">재구매율 <strong>34%</strong></span>
+                    <span class="review-stat">평균 객단가 <strong>4.2만원</strong></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="partner-form">
+        <div class="form-container">
+            <div class="form-header">
+                <span class="section-label">Partner Application</span>
+                <h2 class="section-title">파트너 입점 신청</h2>
+                <p class="form-description">
+                    빈티지샵, 대형 셀러분들을 위한 맞춤 서비스입니다.<br>
+                    아래 정보를 입력해 주시면 담당자가 빠르게 연락드릴게요.
+                </p>
+            </div>
+
+            <form class="partner-form" id="partnerForm" action="https://formspree.io/f/xpqdvbqb" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">담당자명 <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="홍길동" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">연락처 <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="010-1234-5678" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">이메일 <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="business">상호명/사업자명</label>
+                        <input type="text" id="business" name="business" placeholder="빈티지샵 이름 (선택)">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="quantity">예상 상품 수량</label>
+                        <select id="quantity" name="quantity">
+                            <option value="">선택해주세요</option>
+                            <option value="50-100">50 ~ 100개</option>
+                            <option value="100-300">100 ~ 300개</option>
+                            <option value="300-500">300 ~ 500개</option>
+                            <option value="500+">500개 이상</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">주요 취급 카테고리</label>
+                        <select id="category" name="category">
+                            <option value="">선택해주세요</option>
+                            <option value="women">여성의류</option>
+                            <option value="men">남성의류</option>
+                            <option value="vintage">빈티지</option>
+                            <option value="luxury">명품/디자이너</option>
+                            <option value="mixed">복합</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="channel">현재 판매 채널</label>
+                    <input type="text" id="channel" name="channel" placeholder="예: 오프라인 매장, 번개장터, 크림 등">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="message">추가 문의사항</label>
+                    <textarea id="message" name="message" placeholder="궁금하신 점이나 요청사항을 자유롭게 작성해주세요."></textarea>
+                </div>
+
+                <div class="form-agreement">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="agreement" name="agreement" required>
+                        <span>개인정보 수집 및 이용에 동의합니다. <span class="required">*</span></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="form-submit-btn">🚀 파트너 입점 신청하기</button>
+                <p class="form-support-text">(대량업로드지원)</p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-info">
+            <p><strong>대표자:</strong> 김혜성</p>
+            <p><strong>법인명(상호):</strong> 마인이스 주식회사(Mine. is Inc.)</p>
+            <p><strong>사업자등록번호:</strong> 165-86-02594</p>
+            <p><strong>통신판매업 신고번호:</strong> 제2022-서울성동-00830호</p>
+            <p><strong>주소:</strong> 서울특별시 성동구 아차산로 38, 9층(성수동 1가, 개풍빌딩)</p>
+            <p><strong>문의전화:</strong> 02-6013-2201</p>
+            <p><strong>이메일:</strong> partner@charan.kr</p>
+        </div>
+        <p class="footer-copyright">Copyright Ⓒ Mine.is Inc. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        document.getElementById('partnerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const submitBtn = form.querySelector('.form-submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = '신청 중...';
+            submitBtn.disabled = true;
+            
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('✅ 입점 신청이 완료되었습니다!\n담당자가 빠른 시일 내에 연락드리겠습니다.');
+                    form.reset();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    throw new Error('전송 실패');
+                }
+            })
+            .catch(error => {
+                alert('❌ 신청 중 오류가 발생했습니다.\n다시 시도해주세요.');
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
