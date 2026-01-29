@@ -1700,21 +1700,20 @@
                         <label for="quantity">예상 상품 수량</label>
                         <select id="quantity" name="quantity">
                             <option value="">선택해주세요</option>
-                            <option value="50-100">50 ~ 100개</option>
-                            <option value="100-300">100 ~ 300개</option>
-                            <option value="300-500">300 ~ 500개</option>
-                            <option value="500+">500개 이상</option>
+                            <option value="50~100개">50 ~ 100개</option>
+                            <option value="100개~300개">100 ~ 300개</option>
+                            <option value="300~500개">300 ~ 500개</option>
+                            <option value="500개 이상">500개 이상</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="category">주요 취급 카테고리</label>
                         <select id="category" name="category">
                             <option value="">선택해주세요</option>
-                            <option value="women">여성의류</option>
-                            <option value="men">남성의류</option>
-                            <option value="vintage">빈티지</option>
-                            <option value="luxury">명품/디자이너</option>
-                            <option value="mixed">복합</option>
+                            <option value="여성의류">여성의류</option>
+                            <option value="남성의류">남성의류</option>
+                            <option value="빈티지">빈티지</option>
+                            <option value="복합">복합</option>
                         </select>
                     </div>
                 </div>
@@ -1750,11 +1749,13 @@
             <p><strong>통신판매업 신고번호:</strong> 제2022-서울성동-00830호</p>
             <p><strong>주소:</strong> 서울특별시 성동구 아차산로 38, 9층(성수동 1가, 개풍빌딩)</p>
             <p><strong>문의전화:</strong> 02-6013-2201</p>
-            <p><strong>이메일:</strong> partner@charan.kr</p>
+            <p><strong>이메일:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7909180b0d171c0b391a11180b181757120b">[email&#160;protected]</a></p>
         </div>
         <p class="footer-copyright">Copyright Ⓒ Mine.is Inc. All rights reserved.</p>
     </footer>
 
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1766,7 +1767,7 @@
             });
         });
 
-        // Form submission
+        // Form submission - Airtable
         document.getElementById('partnerForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1777,12 +1778,34 @@
             submitBtn.textContent = '신청 중...';
             submitBtn.disabled = true;
             
-            fetch(form.action, {
+            // Airtable 설정
+            const AIRTABLE_BASE_ID = 'appFX63pLB7GnoakS';
+            const AIRTABLE_TABLE_NAME = 'Sellers';
+            const AIRTABLE_API_KEY = 'pat2eogGQdz7XUKHg.a061a35b02c4cee0729a605f8ad5d121a15cf08073749765e538b5d1f0c30610';
+            
+            // 폼 데이터를 Airtable 필드에 매핑
+            const data = {
+                records: [{
+                    fields: {
+                        name: document.getElementById('name').value,
+                        company: document.getElementById('business').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        productRange: document.getElementById('quantity').value,
+                        category: document.getElementById('category').value,
+                        currentChannels: document.getElementById('channel').value,
+                        additionalInquiry: document.getElementById('message').value
+                    }
+                }]
+            };
+            
+            fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`, {
                 method: 'POST',
-                body: new FormData(form),
                 headers: {
-                    'Accept': 'application/json'
-                }
+                    'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
             })
             .then(response => {
                 if (response.ok) {
@@ -1790,11 +1813,12 @@
                     form.reset();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
-                    throw new Error('전송 실패');
+                    return response.json().then(err => { throw new Error(err.error?.message || '전송 실패'); });
                 }
             })
             .catch(error => {
-                alert('❌ 신청 중 오류가 발생했습니다.\n다시 시도해주세요.');
+                console.error('Airtable Error:', error);
+                alert('❌ 신청 중 오류가 발생했습니다.\n다시 시도해 주세요.');
             })
             .finally(() => {
                 submitBtn.textContent = originalText;
