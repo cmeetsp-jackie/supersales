@@ -1724,6 +1724,11 @@
                 </div>
 
                 <div class="form-group full-width">
+                    <label for="website">현재 사용중인 자사몰 사이트 주소</label>
+                    <input type="url" id="website" name="website" placeholder="예: https://example.com">
+                </div>
+
+                <div class="form-group full-width">
                     <label for="message">추가 문의사항</label>
                     <textarea id="message" name="message" placeholder="궁금하신 점이나 요청사항을 자유롭게 작성해주세요."></textarea>
                 </div>
@@ -1794,6 +1799,7 @@
                         productRange: document.getElementById('quantity').value,
                         category: document.getElementById('category').value,
                         currentChannels: document.getElementById('channel').value,
+                        website: document.getElementById('website').value,
                         additionalInquiry: document.getElementById('message').value
                     }
                 }]
